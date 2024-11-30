@@ -1,3 +1,14 @@
+# Set CRAN mirror
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+
+# Load required libraries, install if missing
+if (!requireNamespace("tidyverse", quietly = TRUE)) {
+    install.packages("tidyverse")
+}
+if (!requireNamespace("tidytext", quietly = TRUE)) {
+    install.packages("tidytext")
+}
+
 # 加载必要的库
 library(tidyverse)
 library(tidytext)
