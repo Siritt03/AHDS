@@ -1,39 +1,37 @@
 #!/bin/bash
 
-# 创建输出目录
+# Creating an output directory
 mkdir -p clean
 
-# 输出文件路径
+# Output file path
 output_file="clean/articles.tsv"
 
-# 初始化输出文件（添加表头）
+# Initialise the output file 
 echo -e "PMID\tYear\tTitle" > "$output_file"
 
-# 从 pmids.xml 文件中提取 PMIDs
+# Extracted from pmids.xml file
 pmid_list=$(grep -oP '(?<=<Id>)[^<]+' raw/pmids.xml)
 
-# 遍历每个 PMID
+# Iterate through each PMID
 for pmid in $pmid_list; do
-    # 找到对应的 XML 文件
+    # Find the corresponding XML file
     file="raw/article-${pmid}.xml"
     if [[ ! -f "$file" ]]; then
         echo "Warning: $file not found, skipping..."
         continue
     fi
 
-    # 提取文章标题
+    # Extract relevant fields
     title=$(grep -oP '(?<=<ArticleTitle>).*?(?=</ArticleTitle>)' "$file" | sed 's/<[^>]*>//g')
-
-    # 提取出版年份
     year=$(grep -oP '(?<=<PubDate>).*?(?=</PubDate>)' "$file" | grep -oP '\b\d{4}\b')
 
-    # 如果标题或年份为空，跳过该文件
+    # If the title or year is empty, skip the document
     if [[ -z "$title" || -z "$year" ]]; then
         echo "Warning: Missing title or year for $file, skipping..."
         continue
     fi
 
-    # 写入输出文件
+    # Write to output file
     echo -e "${pmid}\t${year}\t${title}" >> "$output_file"
 done
 

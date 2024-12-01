@@ -3,7 +3,7 @@
 mkdir -p raw
 
 # Step 1: Download PMIDs for articles on long COVID
-curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22long%20covid%22&retmax=10000" > raw/pmids.xml
+curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22long%20covid%22&retmax=200" > raw/pmids.xml
 
 # Parse the PMIDs from the XML
 grep -oP '(?<=<Id>)[^<]+' raw/pmids.xml > raw/pmids.txt
