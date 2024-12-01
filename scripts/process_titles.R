@@ -9,12 +9,11 @@ if (!requireNamespace("tidytext", quietly = TRUE)) {
     install.packages("tidytext")
 }
 
-# 加载必要的库
+
 library(tidyverse)
 library(tidytext)
 library(SnowballC)
 
-# 定义输入和输出文件路径
 input_file <- "clean/articles.tsv"
 output_file <- "clean/titles_grouped.tsv"
 
