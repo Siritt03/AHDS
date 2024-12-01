@@ -44,7 +44,8 @@ sleep 1
 Extract the year and titleof each article and store these in a tab separated file with three columns: PMID, year, and title.
 
 Remove any xml tags(e.g.<i>and </i>)from the titles.
-Remove any rows forarticles that do not have a title
+Remove any rows forarticles that do not have a title.
+
 
 ### Step3: Tidytext
 
@@ -53,6 +54,7 @@ Removing stop words and digits and reduce words to their stem
 
 
 ### Step4: visualisation
+Word Frequency Analysis:
 
 This part count the frequency of occurrence of high-frequency words in different years based on the cleaned headline data and generate a trend graph over time.
 
