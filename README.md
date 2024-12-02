@@ -77,4 +77,8 @@ Graphs are saved in the visualize directory and are used to show trends in the l
 ## Pipeline
 The pipeline is managed by a Snakefile in the root directory.
 
+## Github link
+```bash
+git@github.com:Siritt03/AHDS.git
+```
 
